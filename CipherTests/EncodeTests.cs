@@ -16,16 +16,16 @@ namespace Cipher.Tests
             Assert.AreEqual(expected, actual);
         }
 
-        [Test()]
-        public void RemoveSpaces()
-        {
-            IterativeRotationCipher cipher = new IterativeRotationCipher();
+        //[Test()]
+        //public void RemoveSpaces()
+        //{
+        //    IterativeRotationCipher cipher = new IterativeRotationCipher();
 
-            string expected = "Ifyouwishtomakeanapplepiefromscratch,youmustfirstinventtheuniverse.";
-            string actual = cipher.RemoveSpaces("If you wish to make an apple pie from scratch, you must first invent the universe.");
+        //    string expected = "Ifyouwishtomakeanapplepiefromscratch,youmustfirstinventtheuniverse.";
+        //    string actual = cipher.RemoveSpaces("If you wish to make an apple pie from scratch, you must first invent the universe.");
 
-            Assert.AreEqual(expected, actual);
-        }
+        //    Assert.AreEqual(expected, actual);
+        //}
 
         [Test()]
         public void ReturnSpaces()

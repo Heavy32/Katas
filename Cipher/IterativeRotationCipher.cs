@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 
 namespace Cipher
 {
@@ -12,15 +13,15 @@ namespace Cipher
         {
             for (int i = 0; i < n; i++)
             {
-                tempText = RemoveSpaces(inputText);
+                inputText = RemoveSpaces(inputText)/*Regex.Replace(inputText, @"\s+", "");*/
                 spacePositions = WriteSpacePositions(inputText);
-                tempText = ShiftTextByNumber(tempText, n);
-                tempText = ReturnSpaces(tempText, spacePositions);
-                tempText = ShiftLettersInSubstring(tempText, n);
-                inputText = tempText;
+                inputText = ShiftTextByNumber(inputText, n);
+                inputText = ReturnSpaces(inputText, spacePositions);
+                inputText = ShiftLettersInSubstring(tempText, n);
+                //inputText = tempText;
             }
 
-            return n + " " + tempText;
+            return n + " " + inputText;
         }
 
         public string RemoveSpaces(string inputText)
@@ -119,7 +120,7 @@ namespace Cipher
             for (int i = 0; i < n; i++)
             {
                 tempText = ShiftLettersInSubstring(inputText, -n);
-                tempText = RemoveSpaces(tempText);
+                //tempText = RemoveSpaces(tempText);
                 spacePositions = WriteSpacePositions(inputText);
                 tempText = LettersShift(tempText, -n);
                 tempText = ReturnSpaces(tempText, spacePositions);
