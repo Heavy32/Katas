@@ -3,11 +3,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29728.190
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cipher", "Cipher\Cipher.csproj", "{D5D3FDCD-24E0-4AA4-87E6-4EA13DCAF535}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cipher", "Cipher\Cipher.csproj", "{D5D3FDCD-24E0-4AA4-87E6-4EA13DCAF535}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Cipher", "Cipher", "{B857F830-241B-4B2C-A860-0BDAF236E075}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CipherTests", "CipherTests\CipherTests.csproj", "{3B90EE0F-BBA5-46CC-9005-00361193EAE5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CipherTests", "CipherTests\CipherTests.csproj", "{3B90EE0F-BBA5-46CC-9005-00361193EAE5}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Positions Average", "Positions Average", "{2EEF7E28-E725-4AD3-BC73-323C78DA2CB2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PositionsAverage", "PositionsAverage\PositionsAverage.csproj", "{5F956F29-412A-49A4-B587-F6888DA6A89F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PositionsAverageTests", "PositionsAverageTests\PositionsAverageTests.csproj", "{BB5886FC-1F1C-4AD3-8BE9-E237EF833B82}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,6 +29,14 @@ Global
 		{3B90EE0F-BBA5-46CC-9005-00361193EAE5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3B90EE0F-BBA5-46CC-9005-00361193EAE5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3B90EE0F-BBA5-46CC-9005-00361193EAE5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5F956F29-412A-49A4-B587-F6888DA6A89F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5F956F29-412A-49A4-B587-F6888DA6A89F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5F956F29-412A-49A4-B587-F6888DA6A89F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5F956F29-412A-49A4-B587-F6888DA6A89F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BB5886FC-1F1C-4AD3-8BE9-E237EF833B82}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BB5886FC-1F1C-4AD3-8BE9-E237EF833B82}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BB5886FC-1F1C-4AD3-8BE9-E237EF833B82}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BB5886FC-1F1C-4AD3-8BE9-E237EF833B82}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -30,6 +44,8 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{D5D3FDCD-24E0-4AA4-87E6-4EA13DCAF535} = {B857F830-241B-4B2C-A860-0BDAF236E075}
 		{3B90EE0F-BBA5-46CC-9005-00361193EAE5} = {B857F830-241B-4B2C-A860-0BDAF236E075}
+		{5F956F29-412A-49A4-B587-F6888DA6A89F} = {2EEF7E28-E725-4AD3-BC73-323C78DA2CB2}
+		{BB5886FC-1F1C-4AD3-8BE9-E237EF833B82} = {2EEF7E28-E725-4AD3-BC73-323C78DA2CB2}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {F78BA325-EFB1-4329-BA7F-56371B505B9F}
