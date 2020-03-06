@@ -13,15 +13,15 @@ namespace Cipher
         {
             for (int i = 0; i < n; i++)
             {
-                inputText = RemoveSpaces(inputText)/*Regex.Replace(inputText, @"\s+", "");*/
+                tempText = RemoveSpaces(inputText);
                 spacePositions = WriteSpacePositions(inputText);
-                inputText = ShiftTextByNumber(inputText, n);
-                inputText = ReturnSpaces(inputText, spacePositions);
-                inputText = ShiftLettersInSubstring(tempText, n);
-                //inputText = tempText;
+                tempText = ShiftTextByNumber(tempText, n);
+                tempText = ReturnSpaces(tempText, spacePositions);
+                tempText = ShiftLettersInSubstring(tempText, n);
+                inputText = tempText;
             }
 
-            return n + " " + inputText;
+            return n + " " + tempText;
         }
 
         public string RemoveSpaces(string inputText)
