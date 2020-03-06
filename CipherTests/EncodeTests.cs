@@ -16,38 +16,38 @@ namespace Cipher.Tests
             Assert.AreEqual(expected, actual);
         }
 
-        [Test()]
-        public void RemoveSpaces()
-        {
-            IterativeRotationCipher cipher = new IterativeRotationCipher();
+        //[Test()]
+        //public void RemoveSpaces()
+        //{
+        //    IterativeRotationCipher cipher = new IterativeRotationCipher();
 
-            string expected = "Ifyouwishtomakeanapplepiefromscratch,youmustfirstinventtheuniverse.";
-            string actual = cipher.RemoveSpaces("If you wish to make an apple pie from scratch, you must first invent the universe.");
+        //    string expected = "Ifyouwishtomakeanapplepiefromscratch,youmustfirstinventtheuniverse.";
+        //    string actual = cipher.RemoveSpaces("If you wish to make an apple pie from scratch, you must first invent the universe.");
 
-            Assert.AreEqual(expected, actual);
-        }
+        //    Assert.AreEqual(expected, actual);
+        //}
 
-        [Test()]
-        public void ReturnSpaces()
-        {
-            IterativeRotationCipher cipher = new IterativeRotationCipher();
+        //[Test()]
+        //public void ReturnSpaces()
+        //{
+        //    IterativeRotationCipher cipher = new IterativeRotationCipher();
 
-            string expected = "eu niv erse .I fyou wi shtom ake anap plepiefr oms crat ch,yo umustf irs tinventth";
-            string actual = cipher.ReturnSpaces("euniverse.Ifyouwishtomakeanapplepiefromscratch,youmustfirstinventth",
-                                                cipher.WriteSpacePositions("If you wish to make an apple pie from scratch, you must first invent the universe."));
+        //    string expected = "eu niv erse .I fyou wi shtom ake anap plepiefr oms crat ch,yo umustf irs tinventth";
+        //    string actual = cipher.ReturnSpaces("euniverse.Ifyouwishtomakeanapplepiefromscratch,youmustfirstinventth",
+        //                                        cipher.WriteSpacePositions("If you wish to make an apple pie from scratch, you must first invent the universe."));
 
-            Assert.AreEqual(expected, actual);
-        }
+        //    Assert.AreEqual(expected, actual);
+        //}
 
-        [Test()]
-        public void ShiftLettersInSubstring()
-        {
-            IterativeRotationCipher cipher = new IterativeRotationCipher();
+        //[Test()]
+        //public void ShiftLettersInSubstring()
+        //{
+        //    IterativeRotationCipher cipher = new IterativeRotationCipher();
 
-            string expected = "eu vni seer .I oufy wi shtom eak apan frplepie som atcr ch,yo ustfum sir htinventt";
-            string actual = cipher.ShiftLettersInSubstring("eu niv erse .I fyou wi shtom ake anap plepiefr oms crat ch,yo umustf irs tinventth", 10);
+        //    string expected = "eu vni seer .I oufy wi shtom eak apan frplepie som atcr ch,yo ustfum sir htinventt";
+        //    string actual = cipher.ShiftLettersInSubstring("eu niv erse .I fyou wi shtom ake anap plepiefr oms crat ch,yo umustf irs tinventth", 10);
 
-            Assert.AreEqual(expected, actual);
-        }
+        //    Assert.AreEqual(expected, actual);
+        //}
     }
 }
