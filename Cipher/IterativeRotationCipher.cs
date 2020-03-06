@@ -62,7 +62,7 @@ namespace Cipher
             this.spacePositions = spacePositions;
             int spaceIndex = 0;
 
-            for (int i = 0; i < inputText.Length; i++) // брать сразу из массива 
+            for (int i = 0; i < inputText.Length; i++) // брать сразу измассива 
             {
                 if (spacePositions[spaceIndex] == i)
                 {
