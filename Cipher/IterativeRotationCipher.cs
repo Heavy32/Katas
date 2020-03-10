@@ -8,101 +8,90 @@ namespace Cipher
     public class IterativeRotationCipher
     {
         private List<int> spacePositions = new List<int>();
+        public string inputText;
+        public int n;
 
-        public string Encode(string inputText, int n)
+        public IterativeRotationCipher(string inputText, int n)
+        {
+            this.inputText = inputText;
+            this.n = n;
+        }
+
+        public string Encode()
         {
             for (int i = 0; i < n; i++)
             {
-                WriteSpacePositions(inputText);
+                WriteSpacePositions();
                 inputText = Regex.Replace(inputText, @"\s+", "");
-                ShiftTextByNumber(ref inputText, n);
-                ReturnSpaces(ref inputText);
-                ShiftLettersInSubstring(ref inputText, n);
+                ShiftStringByNumber(ref inputText, n);
+                ReturnSpaces();
+                ShiftLettersInSubstring(n);
             }
 
             return n + " " + inputText;
         }
 
-        public void WriteSpacePositions(string inputText)
+        public void WriteSpacePositions()
         {
             spacePositions = Enumerable.Range(0, inputText.Length)
                                        .Where(x => inputText[x] == ' ')
                                        .ToList();
         }
 
-        public void ShiftTextByNumber(ref string inputText, int offset)
+        public void ShiftStringByNumber(ref string inputText, int offset)
         {
-            string offsetEnding = inputText.Substring(inputText.Length - offset, offset);
-            inputText = offsetEnding + inputText.Remove(inputText.Length - offset, offset);
+            while (Math.Abs(offset) > inputText.Length)
+                offset -= (inputText.Length * Math.Sign(offset));
+
+            if (offset > 0)
+            {
+                inputText = inputText.Substring(inputText.Length - offset, offset)
+                          + inputText.Remove(inputText.Length - offset, offset);
+            }
+            else
+            {
+                inputText = inputText.Remove(0, Math.Abs(offset))
+                          + inputText.Substring(0, Math.Abs(offset));
+            }
         }
 
-        public void ReturnSpaces(ref string inputText)
+        public void ReturnSpaces()
         {
             for (int i = 0; i < spacePositions.Count; i++)
                 inputText = inputText.Insert(spacePositions[i], " ");
         }
 
-        public void ShiftLettersInSubstring(ref string inputText, int offset)
+        public void ShiftLettersInSubstring(int offset)
         {
             string[] words = inputText.Split(' ');
 
             for (int i = 0; i < words.Length; i++)
-                LettersShift(ref words[i], offset);
+                ShiftStringByNumber(ref words[i], offset);
 
             inputText = string.Join(" ", words);
         }
 
-        public void LettersShift(ref string word, int offset)
+        public string Decode()
         {
-            int step = Math.Abs(offset);
-            char[] newWord = new char[word.Length];
+            n = GetNumberFromBeginning();
+            RemoveFirstNumber();
 
-            for (int i = 0; i < word.Length; i++)
+            for (int i = 0; i < n; i++)
             {
-                while (i + step >= word.Length)
-                    step -= word.Length;
-
-                if (offset > 0) // might be done better
-                    newWord[i + step] = word[i];
-                else
-                    newWord[i] = word[i + step];
+                ShiftLettersInSubstring(-n);
+                WriteSpacePositions();
+                inputText = Regex.Replace(inputText, @"\s+", "");
+                ShiftStringByNumber(ref inputText, -n);
+                ReturnSpaces();
             }
 
-            word = new string(newWord);
+            return inputText;
         }
 
+        public int GetNumberFromBeginning() =>
+            Convert.ToInt32(inputText.Substring(0, inputText.IndexOf(' ') + 1));
 
-        public string Decode(string inputText)
-        {
-            return "2";
-            //int n = GetNumberFromBeginning(inputText);
-            //inputText = RemoveFirstNumber(inputText);
-
-            //for (int i = 0; i < n; i++)
-            //{
-            //    tempText = ShiftLettersInSubstring(inputText, -n);
-            //    tempText = RemoveSpaces(tempText);
-            //    spacePositions = WriteSpacePositions(inputText);
-            //    tempText = LettersShift(tempText, -n);
-            //    tempText = ReturnSpaces(tempText, spacePositions);
-            //    inputText = tempText;
-            //}
-
-            //return tempText;
-        }
-
-        public int GetNumberFromBeginning(string inputText)
-        {
-            string[] words = inputText.Split(' ');
-            return Convert.ToInt32(words[0]);
-        }
-
-        public string RemoveFirstNumber(string inputText)
-        {
-            string[] words = inputText.Split(' ');
-            List<string> wordsList = new List<string>(words);
-            wordsList.RemoveAt(0);
-            return string.Join(" ", wordsList.ToArray());
-        }
+        public void RemoveFirstNumber() =>
+            inputText = inputText.Remove(0, inputText.IndexOf(' ') + 1);
     }
 }
