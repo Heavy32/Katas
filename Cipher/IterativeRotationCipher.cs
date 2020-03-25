@@ -7,12 +7,13 @@ namespace Cipher
 {
     public class IterativeRotationCipher
     {
-        private List<int> spacePositions = new List<int>();
-        public string inputText;
-        public int n;
+        private List<int> spacePositions { get; set; }
+        private string inputText;
+        public int n; // поменять
 
         public IterativeRotationCipher(string inputText, int n)
         {
+            spacePositions = new List<int>();
             this.inputText = inputText;
             this.n = n;
         }
@@ -22,7 +23,7 @@ namespace Cipher
             for (int i = 0; i < n; i++)
             {
                 WriteSpacePositions();
-                inputText = Regex.Replace(inputText, @"\s+", "");
+                inputText = Regex.Replace(inputText, @"\s+", ""); // string replace
                 ShiftStringByNumber(ref inputText, n);
                 ReturnSpaces();
                 ShiftLettersInSubstring(n);
@@ -40,29 +41,25 @@ namespace Cipher
 
         public void ShiftStringByNumber(ref string inputText, int offset)
         {
-            while (Math.Abs(offset) > inputText.Length)
-                offset -= (inputText.Length * Math.Sign(offset));
+            offset %= inputText.Length;
 
-            if (offset > 0)
-            {
-                inputText = inputText.Substring(inputText.Length - offset, offset)
-                          + inputText.Remove(inputText.Length - offset, offset);
-            }
-            else
-            {
-                inputText = inputText.Remove(0, Math.Abs(offset))
-                          + inputText.Substring(0, Math.Abs(offset));
-            }
+            inputText = (offset >= 0) ? (inputText.Substring(inputText.Length - offset, offset) + inputText.Substring(0, inputText.Length - offset))
+                                      : (inputText.Substring(-offset, inputText.Length + offset) + inputText.Substring(0, -offset));
+
         }
 
-        public void ReturnSpaces()
+        public void ReturnSpaces() // соединить в линк
         {
+            //Enumerable.Range(0, spacePositions.Count).Select(x => inputText = inputText.Insert(spacePositions[x], " ")).ToString(); //????
+
             for (int i = 0; i < spacePositions.Count; i++)
                 inputText = inputText.Insert(spacePositions[i], " ");
         }
 
-        public void ShiftLettersInSubstring(int offset)
+        public void ShiftLettersInSubstring(int offset)/// в линк сплит.точка 
         {
+            //var a = Enumerable.Range(0, inputText.Length).Select(x => inputText.Split(' ').Select(word => word[x]));
+
             string[] words = inputText.Split(' ');
 
             for (int i = 0; i < words.Length; i++)
@@ -72,9 +69,9 @@ namespace Cipher
         }
 
         public string Decode()
-        {
-            n = GetNumberFromBeginning();
-            RemoveFirstNumber();
+        {        
+            n = SplitStringToNumberAndText().Item1;
+            inputText = SplitStringToNumberAndText().Item2;
 
             for (int i = 0; i < n; i++)
             {
@@ -88,10 +85,7 @@ namespace Cipher
             return inputText;
         }
 
-        public int GetNumberFromBeginning() =>
-            Convert.ToInt32(inputText.Substring(0, inputText.IndexOf(' ') + 1));
-
-        public void RemoveFirstNumber() =>
-            inputText = inputText.Remove(0, inputText.IndexOf(' ') + 1);
+        public Tuple<int, string> SplitStringToNumberAndText()        
+                 => new Tuple<int, string>(Convert.ToInt32(inputText.Split(new char[] { ' ' }, 2)[0]), inputText.Split(new char[] { ' ' }, 2)[1]);        
     }
 }
