@@ -50,10 +50,7 @@ namespace Cipher
 
         public void ReturnSpaces() // соединить в линк
         {
-            //Enumerable.Range(0, spacePositions.Count).Select(x => inputText = inputText.Insert(spacePositions[x], " ")).ToString(); //????
-
-            for (int i = 0; i < spacePositions.Count; i++)
-                inputText = inputText.Insert(spacePositions[i], " ");
+            var result = inputText.Aggregate("", (string a, string b) => (text.IndexOf(b) == spacePositions[0]) ? (a + " ") : (a + b));
         }
 
         public void ShiftLettersInSubstring(int offset)/// в линк сплит.точка 
