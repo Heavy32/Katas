@@ -1,4 +1,5 @@
 using NUnit.Framework;
+using System.Text.RegularExpressions;
 
 namespace Cipher.Tests
 {
@@ -14,6 +15,19 @@ namespace Cipher.Tests
             string actual = cipher.Encode();
 
             Assert.AreEqual(expected, actual);
+        }
+
+        [Test()]
+        public void ReturnSpaces()
+        {
+            IterativeRotationCipher cipher = new IterativeRotationCipher("You are my friend, how are you doing?", 10);
+
+            string expected = "You are my friend, how are you doing?";
+            cipher.WriteSpacePositions();
+            cipher.inputText = Regex.Replace(cipher.inputText, @"\s+", "");
+            cipher.ReturnSpaces();
+
+            Assert.AreEqual(expected, cipher.inputText);
         }
     }
 }

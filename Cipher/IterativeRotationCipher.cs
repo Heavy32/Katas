@@ -8,7 +8,7 @@ namespace Cipher
     public class IterativeRotationCipher
     {
         private List<int> spacePositions { get; set; }
-        private string inputText;
+        public string inputText;
         public int n;
 
         public IterativeRotationCipher(string inputText, int n)
