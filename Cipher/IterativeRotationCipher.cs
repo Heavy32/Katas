@@ -51,7 +51,7 @@ namespace Cipher
         public void ReturnSpaces() 
         {
             int i = 0;
-            inputText = inputText.Aggregate("", func: (a, b) => (inputText.IndexOf(b) + i != spacePositions[i]) ? a + b : a + " " + b + ((i < spacePositions.Count - 1) ? "" + (null * i++) : ""));
+            inputText = inputText.Aggregate("", func: (a, b) => (inputText.IndexOf(b) + i != spacePositions[i]) ? a + b : a + " " + b + ((i < spacePositions.Count) ? "" + (null * i++) : ""));
         }
 
         public void ShiftLettersInSubstring(int offset)
