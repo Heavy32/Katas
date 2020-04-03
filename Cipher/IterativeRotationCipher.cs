@@ -23,7 +23,7 @@ namespace Cipher
             for (int i = 0; i < n; i++)
             {
                 WriteSpacePositions();
-                inputText = Regex.Replace(inputText, @"\s+", ""); // string replace
+                inputText = Regex.Replace(inputText, @"\s+", "");
                 ShiftStringByNumber(ref inputText, n);
                 ReturnSpaces();
                 ShiftLettersInSubstring(n);
@@ -48,15 +48,14 @@ namespace Cipher
 
         }
 
-        public void ReturnSpaces() // соединить в линк
+        public void ReturnSpaces() 
         {
-            var result = inputText.Aggregate("", (string a, string b) => (text.IndexOf(b) == spacePositions[0]) ? (a + " ") : (a + b));
+            int i = 0;
+            inputText = inputText.Aggregate("", func: (a, b) => (inputText.IndexOf(b) + i != spacePositions[i]) ? a + b : a + " " + b + ((i < spacePositions.Count - 1) ? "" + (null * i++) : ""));
         }
 
-        public void ShiftLettersInSubstring(int offset)/// в линк сплит.точка 
+        public void ShiftLettersInSubstring(int offset)
         {
-            //var a = Enumerable.Range(0, inputText.Length).Select(x => inputText.Split(' ').Select(word => word[x]));
-
             string[] words = inputText.Split(' ');
 
             for (int i = 0; i < words.Length; i++)
