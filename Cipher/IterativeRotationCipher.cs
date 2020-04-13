@@ -8,8 +8,8 @@ namespace Cipher
     public class IterativeRotationCipher
     {
         private List<int> spacePositions { get; set; }
-        private string inputText;
-        public int n; // поменять
+        public string inputText;
+        public int n;
 
         public IterativeRotationCipher(string inputText, int n)
         {
@@ -23,7 +23,7 @@ namespace Cipher
             for (int i = 0; i < n; i++)
             {
                 WriteSpacePositions();
-                inputText = Regex.Replace(inputText, @"\s+", ""); // string replace
+                inputText = Regex.Replace(inputText, @"\s+", "");
                 ShiftStringByNumber(ref inputText, n);
                 ReturnSpaces();
                 ShiftLettersInSubstring(n);
@@ -48,18 +48,15 @@ namespace Cipher
 
         }
 
-        public void ReturnSpaces() // соединить в линк
+        public void ReturnSpaces()
         {
-            //Enumerable.Range(0, spacePositions.Count).Select(x => inputText = inputText.Insert(spacePositions[x], " ")).ToString(); //????
-
-            for (int i = 0; i < spacePositions.Count; i++)
-                inputText = inputText.Insert(spacePositions[i], " ");
+            int i = 0;
+            string a = "123";
+            inputText = inputText.Aggregate("", func: (a, b) => (inputText.IndexOf(b) + i != spacePositions[i]) ? a + b : a + " " + b + ((i < spacePositions.Count) ? "" + (null * i++) : ""));
         }
 
-        public void ShiftLettersInSubstring(int offset)/// в линк сплит.точка 
+        public void ShiftLettersInSubstring(int offset)
         {
-            //var a = Enumerable.Range(0, inputText.Length).Select(x => inputText.Split(' ').Select(word => word[x]));
-
             string[] words = inputText.Split(' ');
 
             for (int i = 0; i < words.Length; i++)
@@ -69,9 +66,9 @@ namespace Cipher
         }
 
         public string Decode()
-        {        
-            n = SplitStringToNumberAndText().Item1;
-            inputText = SplitStringToNumberAndText().Item2;
+        {
+            n = SplitStringToNumberAndText().number;
+            inputText = SplitStringToNumberAndText().textToDecode;
 
             for (int i = 0; i < n; i++)
             {
@@ -81,11 +78,15 @@ namespace Cipher
                 ShiftStringByNumber(ref inputText, -n);
                 ReturnSpaces();
             }
-
+            
             return inputText;
         }
 
-        public Tuple<int, string> SplitStringToNumberAndText()        
-                 => new Tuple<int, string>(Convert.ToInt32(inputText.Split(new char[] { ' ' }, 2)[0]), inputText.Split(new char[] { ' ' }, 2)[1]);        
+        public (int number, string textToDecode) SplitStringToNumberAndText()
+        {
+            int number = Convert.ToInt32(inputText.Split(new char[] { ' ' }, 2)[0]);
+            string textToDecode = inputText.Split(new char[] { ' ' }, 2)[1];
+            return (number, textToDecode);
+        }              
     }
 }
