@@ -15,11 +15,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PositionsAverage", "Positio
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PositionsAverageTests", "PositionsAverageTests\PositionsAverageTests.csproj", "{BB5886FC-1F1C-4AD3-8BE9-E237EF833B82}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rot13", "Rot13\Rot13.csproj", "{5C45B4A4-D917-49AC-B32C-53D5BF437643}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rot13", "Rot13\Rot13.csproj", "{5C45B4A4-D917-49AC-B32C-53D5BF437643}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Rot 13", "Rot 13", "{C1FDF63C-C62A-4849-86F7-6DE82692523D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rot13Tests", "Rot13Tests\Rot13Tests.csproj", "{60829A74-AF55-4C87-8B98-C57E3BAE3A53}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rot13Tests", "Rot13Tests\Rot13Tests.csproj", "{60829A74-AF55-4C87-8B98-C57E3BAE3A53}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
