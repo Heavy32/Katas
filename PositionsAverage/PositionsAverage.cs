@@ -13,6 +13,7 @@ namespace PositionsAverage
             string[] numbers = Regex.Replace(s, @"\s+", "").Split(',');
             double counter = default;
             double operationsCounter = default;
+
             
             for (int i = 0; i < numbers.Length; i++)
             {

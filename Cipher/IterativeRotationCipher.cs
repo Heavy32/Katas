@@ -8,6 +8,7 @@ namespace Cipher
     public class IterativeRotationCipher
     {
         private List<int> spacePositions { get; set; }
+
         public string inputText;
         public int n;
 
@@ -23,7 +24,9 @@ namespace Cipher
             for (int i = 0; i < n; i++)
             {
                 WriteSpacePositions();
+
                 inputText = Regex.Replace(inputText, @"\s+", "");
+
                 ShiftStringByNumber(ref inputText, n);
                 ReturnSpaces();
                 ShiftLettersInSubstring(n);
@@ -56,6 +59,7 @@ namespace Cipher
 
         public void ShiftLettersInSubstring(int offset)
         {
+
             string[] words = inputText.Split(' ');
 
             for (int i = 0; i < words.Length; i++)
@@ -66,6 +70,7 @@ namespace Cipher
 
         public string Decode()
         {
+
             n = SplitStringToNumberAndText().Item1;
             inputText = SplitStringToNumberAndText().Item2;
 
@@ -83,5 +88,6 @@ namespace Cipher
 
         public Tuple<int, string> SplitStringToNumberAndText()
                  => new Tuple<int, string>(Convert.ToInt32(inputText.Split(new char[] { ' ' }, 2)[0]), inputText.Split(new char[] { ' ' }, 2)[1]);
+
     }
 }
