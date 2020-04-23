@@ -23,10 +23,6 @@ namespace Cipher.Tests
             IterativeRotationCipher cipher = new IterativeRotationCipher("You are my friend, how are you doing?", 10);
 
             string expected = "You are my friend, how are you doing?";
-            /*Youaremyfriend,howareyoudoing?
-             * You aremyfriend,howareyoudoing?
-             * 
-             */
             cipher.WriteSpacePositions();
             cipher.inputText = Regex.Replace(cipher.inputText, @"\s+", "");
             cipher.ReturnSpaces();

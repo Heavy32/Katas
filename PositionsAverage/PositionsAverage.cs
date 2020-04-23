@@ -12,6 +12,8 @@ namespace PositionsAverage
         {         
             string[] numbers = Regex.Replace(s, @"\s+", "").Split(',');
             double counter = default;
+            double operationsCounter = default;
+
             
             for (int i = 0; i < numbers.Length; i++)
             {
@@ -21,11 +23,11 @@ namespace PositionsAverage
                     {
                         if (numbers[i][k] == numbers[j][k])
                             counter++;
+                        operationsCounter++;
                     }
                 }
             }
-
-            return Math.Round((counter / (numbers[0].Length * numbers.Length * (numbers.Length - 1) / 2)) * 100, 10);
+            return Math.Round((counter / operationsCounter * 100), 10);
         }
     }
 }

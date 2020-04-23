@@ -48,10 +48,9 @@ namespace Cipher
 
         }
 
-        public void ReturnSpaces()
+
+        public void ReturnSpaces() 
         {
-            int i = 0;
-            string a = "123";
             inputText = inputText.Aggregate("", func: (a, b) => (inputText.IndexOf(b) + i != spacePositions[i]) ? a + b : a + " " + b + ((i < spacePositions.Count) ? "" + (null * i++) : ""));
         }
 
