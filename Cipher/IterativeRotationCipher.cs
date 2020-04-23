@@ -8,7 +8,6 @@ namespace Cipher
     public class IterativeRotationCipher
     {
         private List<int> spacePositions { get; set; }
-
         public string inputText;
         public int n;
 
@@ -24,9 +23,7 @@ namespace Cipher
             for (int i = 0; i < n; i++)
             {
                 WriteSpacePositions();
-
                 inputText = Regex.Replace(inputText, @"\s+", "");
-
                 ShiftStringByNumber(ref inputText, n);
                 ReturnSpaces();
                 ShiftLettersInSubstring(n);
@@ -51,15 +48,14 @@ namespace Cipher
 
         }
 
+
         public void ReturnSpaces() 
         {
-            int i = 0;
             inputText = inputText.Aggregate("", func: (a, b) => (inputText.IndexOf(b) + i != spacePositions[i]) ? a + b : a + " " + b + ((i < spacePositions.Count) ? "" + (null * i++) : ""));
         }
 
         public void ShiftLettersInSubstring(int offset)
         {
-
             string[] words = inputText.Split(' ');
 
             for (int i = 0; i < words.Length; i++)
@@ -70,9 +66,8 @@ namespace Cipher
 
         public string Decode()
         {
-
-            n = SplitStringToNumberAndText().Item1;
-            inputText = SplitStringToNumberAndText().Item2;
+            n = SplitStringToNumberAndText().number;
+            inputText = SplitStringToNumberAndText().textToDecode;
 
             for (int i = 0; i < n; i++)
             {
@@ -82,12 +77,15 @@ namespace Cipher
                 ShiftStringByNumber(ref inputText, -n);
                 ReturnSpaces();
             }
-
+            
             return inputText;
         }
 
-        public Tuple<int, string> SplitStringToNumberAndText()
-                 => new Tuple<int, string>(Convert.ToInt32(inputText.Split(new char[] { ' ' }, 2)[0]), inputText.Split(new char[] { ' ' }, 2)[1]);
-
+        public (int number, string textToDecode) SplitStringToNumberAndText()
+        {
+            int number = Convert.ToInt32(inputText.Split(new char[] { ' ' }, 2)[0]);
+            string textToDecode = inputText.Split(new char[] { ' ' }, 2)[1];
+            return (number, textToDecode);
+        }              
     }
 }

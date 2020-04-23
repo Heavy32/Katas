@@ -28,7 +28,6 @@ namespace Cipher.Tests
             cipher.ReturnSpaces();
 
             Assert.AreEqual(expected, cipher.inputText);
-
         }
     }
 }
