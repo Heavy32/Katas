@@ -11,9 +11,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CipherTests", "CipherTests\
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Positions Average", "Positions Average", "{2EEF7E28-E725-4AD3-BC73-323C78DA2CB2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PositionsAverage", "PositionsAverage\PositionsAverage.csproj", "{5F956F29-412A-49A4-B587-F6888DA6A89F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PositionsAverage", "PositionsAverage\PositionsAverage.csproj", "{5F956F29-412A-49A4-B587-F6888DA6A89F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PositionsAverageTests", "PositionsAverageTests\PositionsAverageTests.csproj", "{BB5886FC-1F1C-4AD3-8BE9-E237EF833B82}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PositionsAverageTests", "PositionsAverageTests\PositionsAverageTests.csproj", "{BB5886FC-1F1C-4AD3-8BE9-E237EF833B82}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Rail fence", "Rail fence", "{472E5C61-7237-481E-8E6A-196635531FB8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RailFenceCipher", "RailFenceCipher\RailFenceCipher.csproj", "{D440B4D4-58E3-4147-BB57-7A8E99C48153}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -37,6 +41,10 @@ Global
 		{BB5886FC-1F1C-4AD3-8BE9-E237EF833B82}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BB5886FC-1F1C-4AD3-8BE9-E237EF833B82}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BB5886FC-1F1C-4AD3-8BE9-E237EF833B82}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D440B4D4-58E3-4147-BB57-7A8E99C48153}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D440B4D4-58E3-4147-BB57-7A8E99C48153}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D440B4D4-58E3-4147-BB57-7A8E99C48153}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D440B4D4-58E3-4147-BB57-7A8E99C48153}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -46,6 +54,7 @@ Global
 		{3B90EE0F-BBA5-46CC-9005-00361193EAE5} = {B857F830-241B-4B2C-A860-0BDAF236E075}
 		{5F956F29-412A-49A4-B587-F6888DA6A89F} = {2EEF7E28-E725-4AD3-BC73-323C78DA2CB2}
 		{BB5886FC-1F1C-4AD3-8BE9-E237EF833B82} = {2EEF7E28-E725-4AD3-BC73-323C78DA2CB2}
+		{D440B4D4-58E3-4147-BB57-7A8E99C48153} = {472E5C61-7237-481E-8E6A-196635531FB8}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {F78BA325-EFB1-4329-BA7F-56371B505B9F}
