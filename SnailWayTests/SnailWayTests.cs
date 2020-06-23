@@ -2,7 +2,6 @@
 
 namespace SnailWay.Tests
 {
-    [TestFixture]
     public class SnailWayTests
     {
         [Test]
