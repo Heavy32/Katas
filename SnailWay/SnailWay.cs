@@ -8,18 +8,21 @@ namespace SnailWay
     {
         public static int[] CalculateWay(int[][] grid)
         {
-            List<int> snailWay = new List<int>();
-            var tempGrid = grid as IEnumerable<IEnumerable<int>>;
-
-            while (tempGrid.Count() != 0)
+            if(grid == null)
             {
-                snailWay.AddRange(tempGrid.ElementAt(0));
-                tempGrid = tempGrid.Skip(1);
-                snailWay.AddRange((tempGrid.Select(line => line.Last())));
-                tempGrid = tempGrid.Select(line => line.SkipLast(1))
-                              .Reverse()
-                              .Select(line => line.Reverse());
+                return null;
             }
+
+            List<int> snailWay = new List<int>();
+
+            while (grid.Count() != 0)
+            {
+                snailWay.AddRange(grid[0]);
+                grid = grid.Skip(1).ToArray();
+                snailWay.AddRange(grid.Select(line => line[^1]));
+                grid = grid.Select(line => line.SkipLast(1).Reverse().ToArray()).Reverse().ToArray();
+            }
+
             return snailWay.ToArray();
         }
     }
